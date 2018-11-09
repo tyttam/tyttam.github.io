@@ -15,7 +15,7 @@ body {
     float:left;
 }
 
-pre {
+.rob {
     font-size: 1.3em;
     text-align: center;
     color: #3d6690;
@@ -48,4 +48,19 @@ pre {
 
 .main_block>h5 {
     margin-left: 17px;
+}
+
+.logo-bg {
+    background-color: #e9ecef;
+    border-bottom: 3px solid #fff;
+}
+
+.card {
+    margin-top: 25px;
+    border-radius: 15px;
+    border-color: #929ba2 !important;
+}
+
+.card-header:first-child {
+    border-radius: 15px 15px 0 0;
 }

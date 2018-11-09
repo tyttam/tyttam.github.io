@@ -13,16 +13,40 @@
         <script src="js/clipboard.min.js"></script>
     </head>
     <body>
+        <section class="container-fluid">
+            <nav class="navbar navbar-light logo-bg">
+              <span class="navbar-brand mb-0 h1">Онлайн генератор виртуального хоста</span>
+            </nav>
+        </section>
         <section class="col-md-4 sect_inp">
             <div class="main_block">
-                <h5>1. Вводим адрес сайта</h5>
+                <h5>Адрес сайта</h5>
                 <div class="input-group mb-3 col-md-12">
                   <input type="text" class="form-control" placeholder="preprod.mhealthcongress.ru" aria-label="preprod.mhealthcongress.ru" aria-describedby="inputGroup-sizing-default" id="hostName">
               </div>
-              <h5>2. Вводим путь к папке с файлами сайта</h5>
+              <h5>Путь к папке с файлами сайта</h5>
               <div class="input-group mb-3 col-md-12">
                   <input type="text" class="form-control" placeholder="/home/user-32/smileexpo/mhealthcongress-ru/web" aria-label="Sizing example input" aria-describedby="/home/user-32/smileexpo/mhealthcongress-ru/web" id="dirName">
                 </div>
+            </div>
+
+            <div class="card border-secondary mb-3">
+              <div class="card-header">Краткий мануал</div>
+              <div class="card-body text-secondary">
+                <h5 class="card-title">1. Адрес и путь</h5>
+                <p class="card-text">Вводим адрес сайта и путь к папке с файлами.</p>
+                <h5 class="card-title" style="color:red;">ОБРАТИ ВНИМАНИЕ!</h5>
+                <p class="card-text" style="color:red;">Перед тем как приступить к пункту 2, проверь данные что ввел в адресе сайта.<br>
+                Не должно быть:
+                    <ul>
+                        <li style="color:red;">https или http</li>
+                        <li style="color:red;">в конце не должно быть слеша(/)</li>
+                    </ul>
+                </p>
+                <p>Это будет пофикшено =)</p>
+                <h5 class="card-title">2. Просто нажми на поле</h5>
+                <p class="card-text">Все поля что были сгенерированы копируются по клику(кликаем по полю и все содержание поля попадает в буффере). Теперь поэтапно копируем и вставляем в командную строку. В конце получаем виртуальный хост.</p>
+              </div>
             </div>
         </section>
 
@@ -31,11 +55,13 @@
                 <div id="text">
                     <div class="jumbotron" style="margin-top:10px">
                         <h1 class="display-4">Привет</h1>
-                        <p class="lead">Есть что предложить? Напиши в рокет чате</p>
+                        <p class="lead">Есть что предложить? Напиши в рокет чате </p>
+                        <pre>@a.listvennikov</pre>
                         <hr class="my-4">
+                        <span class="badge badge-pill badge-dark">v1.3</span><p>Добавлен краткий мануал и Навбар с названием</p>
                         <span class="badge badge-pill badge-dark">v1.2</span><p>Изменения в дизайне.Изменен блок с вводом.</p>
                         <span class="badge badge-pill badge-dark">v1.1</span><p>Пофиксил баг. Изменил чуть дизайн. Добавил копирование текста по клику поля.</p>
-                        <span class="badge badge-pill badge-dark">v1.0</span><p>Собсна релиз</p><pre>
+                        <span class="badge badge-pill badge-dark">v1.0</span><p>Релиз</p><pre class="rob">
                |\  /|
                \|_|/
                /. .\
