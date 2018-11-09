@@ -6,7 +6,8 @@ var text = document.getElementById('text');;
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 
 $('#dirName, #hostName' ).keyup(function(){
-    host = $('#hostName').val();
+    hostCheck = $('#hostName').val();
+    host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
     directory = $('#dirName').val();
     attribute = {
         create : "sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/" + host + ".conf" ,
