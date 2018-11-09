@@ -16,6 +16,14 @@ body {
     float:left;
 }
 
+#generate {
+    position: relative;
+    left: 2%;
+    width: 96%;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
 .btn-color {
     background-color: #fff;
     margin: 15px;

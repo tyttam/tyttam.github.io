@@ -5,7 +5,7 @@ var text = document.getElementById('text');;
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 
-$('#dirName, #hostName' ).keyup(function(){
+$('#generate' ).click(function(){
     hostCheck = $('#hostName').val();
     host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
     directory = $('#dirName').val();
