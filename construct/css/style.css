@@ -6,56 +6,56 @@
  */
   body{
       background-color: #0468b4;
+      margin: 0;
   }
   .blocks{
-      /* display: inline-block; */
+      margin-left: 15px;
       background-color: rgba(0, 0, 0, 0.25);
       width: 20%;
       padding: 20px;
-      border-radius: 20px;
+      border-radius: 0px 0px 20px 20px;
       position: absolute;
   }
   .main{
-      margin-left: 1%;
+      margin-left: 0.5%;
       /* display: inline-block; */
       background-color: #fff;
-      padding: 20px;
-      border-radius: 20px;
+      padding: 20px 20px 20px 0;
+      /* border-radius: 20px; */
       position: absolute;
       left: 25%;
       width: 70%;
   }
   .text_block{
-
+      display: flex;
   }
   .text_block textarea{
       background-color: #fff;
-      border: 2px solid #20439d;
-      border-radius: 10px;
-      width: calc(100% - 20px);
-      max-width: calc(100% - 20px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      /* border-radius: 10px; */
+      width: calc(95% - 20px);
+      max-width: calc(95% - 20px);
       min-height: 50px;
       color: #000;
       padding: 3px 5px;
+      margin-top: 5px;
       font-size: 1.2em;
       font-family: 'Comfortaa', cursive;
-      z-index: 1;
   }
-  .text_block p {
-      position: relative;
-      margin: 15px 0px -2px 30px;
-      padding: 7px;
-      background-color: rgb(2, 175, 175);
-      display: inline-block;
-      border-radius: 10px 10px 0 0;
-      font-family: 'Comfortaa', cursive;
-      font-weight : 900;
-      border: 2px solid #20439d;
-      border-bottom: 1px solid rgba(200, 200, 200, 1);
-      z-index: 2;
-      color: #fff;
-      font-size: 1em;
+  .text_block textarea:hover{
+      border: 1px solid #20439d;
   }
+
+    .text_block p.tag {
+        padding: 5px 0 0 5px;
+        margin: 5px 10px 0 0;
+        background-color: rgb(2, 175, 175);
+        width: calc(5% - 20px);
+        max-width: calc(5% - 20px);
+        font-family: 'Comfortaa', cursive;
+        font-weight : 900;
+        /* border-radius: 0 10px 10px 0; */
+    }
 
   .blocks h1 {
       color: #fff;

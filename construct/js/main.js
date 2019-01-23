@@ -1,9 +1,10 @@
 const BLOCKS = {
-    btn_h : {p: 'ЗАГОЛОВОК | h1'},
-    btn_p : {p: 'КОНТЕНТ | p'},
-    btn_a : {p: 'ССЫЛКА | a'},
-    btn_img : {p: 'КАРТИНКА | img'}
+    btn_h : {p: 'h1'},
+    btn_p : {p: 'p'},
+    btn_a : {p: 'a'},
+    btn_img : {p: 'img'}
 };
+
     // const MAIN = document.getElementById('sortable');
 
     // var new_elem = document.getElementById('btn-h');
@@ -18,6 +19,7 @@ const BLOCKS = {
         div.className = 'text_block';
         // <p>BLOCKS.btn_h.p</p>
         var p = document.createElement('p');
+        p.className = 'tag';
         for (var name_block in BLOCKS) {
             if (name_block == evt_id) {
                 p.innerHTML = BLOCKS[name_block].p;
