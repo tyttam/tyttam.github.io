@@ -12,16 +12,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <!-- end bootstrap -->
-  <!-- Include external CSS. -->
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
-
-      <!-- Include Editor style. -->
-      <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-      <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fho9vdvww212hrh7vkaldsjejquw4817eg2l73b9oc3bmzmg"></script>
 
       <link rel="stylesheet" href="css/style.css">
     <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
     $( function() {
         $( "#sortable" ).sortable();
         $( "#sortable" ).disableSelection();
@@ -61,9 +58,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                  <div id="froala-editor">
-                      <p>Наташа, та что изничтожает Леш</p>
-                  </div>
+                  <textarea id="mytextarea">Hello, World!</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
@@ -73,12 +68,6 @@
           </div>
         </div>
         <form class="" id="sortable" action="index.html" method="post">
-            <div class="text_block">
-                <p class="tag">h1</p>
-                <div id="preview" class="fr-view">
-                    <p></p>
-                </div>
-            </div>
             <div class="text_block">
                 <p class="tag">h1</p>
                 <div id="input" contenteditable="true">I look like <b>textarea</b></div>
@@ -98,23 +87,5 @@
         </form>
     </div>
 
-
-    <!-- Include external JS libs. -->
-    <script type="text/javascript"
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-
-    <!-- Include Editor JS files. -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
-
-    <!-- Initialize the editor. -->
-    <script>
-    $(function() {
-      $('div#froala-editor').froalaEditor()
-      .on('froalaEditor.contentChanged', function (e, editor) {
-        $('#preview').html(editor.html.get());
-      })
-    });
-    </script>
 </body>
 </html>
