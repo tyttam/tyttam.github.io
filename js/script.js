@@ -1,59 +1,76 @@
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
+var type_host;
 
-class VirtHost {
-    constructor(host, directory) {
-        this.host = host;
-        this.directory = directory;
-    }
-
-    getContent() {
-        var attribute = {
-            create : `sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/${this.host}.conf` ,
-            edit : `sudo gedit /etc/apache2/sites-available/${this.host}.conf` ,
-            text : `&#60;VirtualHost *:80&#62;<br>${tab}
-            ServerAdmin test@mail.com<br>${tab}
-            ServerName ${this.host}<br>${tab}
-            ServerAlias ${this.host}<br>${tab}
-            DocumentRoot ${this.directory}<br>${tab}
-            &#60;Directory \"${this.directory}\"&#62;<br>${tab}${tab}
-            AllowOverride All<br>${tab}${tab}
-            Require all granted<br>${tab}
-            &#60;/Directory&#62;<br>${tab}
-            ErrorLog \${APACHE_LOG_DIR}/error.log<br>${tab}
-            CustomLog \${APACHE_LOG_DIR}/access.log combined<br>
-            &#60;/VirtualHost&#62;` ,
-            start : `sudo a2ensite ${this.host}.conf` ,
-            default : "sudo a2dissite 000-default.conf" ,
-            restart : "sudo systemctl restart apache2" ,
-            hosts : "sudo gedit /etc/hosts" ,
-            finish : `127.0.0.1	${this.host}`
-        };
-        return attribute;
-    }
-}
-
-var copy = new Clipboard('.btn-color');
+var copy = new Clipboard('.line');
 
 copy.on('success', function(e){
     window.setTimeout(function(){e.clearSelection();}, 10);
 });
 
+M.AutoInit();
 
-$('#generate' ).click(function(){
-    var modalContent = '';
-    // очищаем блок, чтобы предыдущие данные не отображались вновь
-    $('#text').empty();
-    hostCheck = $('#hostName').val();
-    // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
-    host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
-    directory = $('#dirName').val();
-    var vh = new VirtHost(host, directory);
-    var i = 0;
-    var content = vh.getContent();
-    for (key in content) {
-        i++;
-        modalContent += "<div id=\"copyme" + i + "\" class=\"btn-color\" data-clipboard-action=\"copy\" data-clipboard-target=\"#copyme" + i + "\">" + content[key] + "</div>";
+function checkInput(host, directory, type_host) {
+    if (host == '') {
+        M.toast({html: 'Нужно ввести адрес сайта', classes: 'rounded'});
+        return false;
+    } else {
+        if (!(host.match(/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i))) {
+            M.toast({html: 'Введен некорректный Url', classes: 'rounded'});
+            return false;
+        }
     }
-    $('#text').html(modalContent);
+    if (directory == '') {
+        M.toast({html: 'Нужно прописать путь к файлам сайта', classes: 'rounded'});
+        return false;
+    }
+    if (type_host == undefined) {
+        M.toast({html: 'Нужно выбрать свой локлаьный хост', classes: 'rounded'});
+        return false;
+    }
+    return true;
+}
+
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+
+  $("#apache, #nginx").change(function () {
+        if ($("#apache").is(":checked")) {
+            $('.apache').removeClass('filter-gray');
+            $('.nginx').removeClass('filter-gray-off');
+            $('.apache').addClass('filter-gray-off');
+            $('.nginx').addClass('filter-gray');
+            type_host = 'apache';
+        }
+        else if ($("#nginx").is(":checked")) {
+            $('.nginx').removeClass('filter-gray');
+            $('.apache').removeClass('filter-gray-off');
+            $('.nginx').addClass('filter-gray-off');
+            $('.apache').addClass('filter-gray');
+            type_host = 'nginx';
+        };
+    });
+        $('#generate' ).click(function(){
+
+            hostCheck = $('#hostName').val();
+            // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
+            host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
+            directory = $('#dirName').val();
+
+            checkInputs = checkInput(host,directory,type_host);
+            console.log(type_host);
+
+            if (checkInputs) {
+                var modalContent = '';
+                var vh = new VirtHost(host, directory);
+                var i = 0;
+                var content = type_host == 'apache' ? vh.getApache() : vh.getNginx();
+                for (key in content) {
+                    i++;
+                    modalContent += "<div id=\"copyme" + i + "\" class=\"line\" data-clipboard-action=\"copy\" data-clipboard-target=\"#copyme" + i + "\">" + content[key] + "</div>";
+                }
+                $('.card').removeClass('hide');
+                $('#text').html(modalContent);
+            }
+        });
 });

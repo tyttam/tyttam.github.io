@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Генератор виртуального хоста</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <!-- css -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <!-- js -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="js/clipboard.min.js"></script>
+    </head>
+    <body>
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div id="text">
+                </div>
+            </div>
+          </div>
+        </div>
+        <section class="container-fluid">
+            <nav class="navbar navbar-light logo-bg">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">нлайн генератор виртуального хоста
+                </a>
+            </nav>
+        </section>
+        <section class="col-md-4 sect_inp">
+            <div class="main_block">
+                <h5>Адрес сайта</h5>
+                <div class="input-group mb-3 col-md-12">
+                  <input type="text" class="form-control" placeholder="tyttam.github.io" aria-label="tyttam.github.io" aria-describedby="inputGroup-sizing-default" id="hostName">
+              </div>
+              <h5>Путь к папке с файлами сайта</h5>
+              <div class="input-group mb-3 col-md-12">
+                  <input type="text" class="form-control" placeholder="/home/user/site/tyttam.github.io/web" aria-label="Sizing example input" aria-describedby="/home/user/site/tyttam.github.io/web" id="dirName">
+                </div>
+                <button type="button" class="btn btn-outline-secondary" id="generate" data-toggle="modal" data-target=".bd-example-modal-lg">Сгенерировать хост</button>
+            </div>
+
+            <div class="card border-secondary mb-3">
+              <div class="card-header">Краткий мануал</div>
+              <div class="card-body text-secondary">
+                <h5 class="card-title">1. Адрес и путь</h5>
+                <p class="card-text">Вводим адрес сайта и путь к папке с файлами.</p>
+                <h5 class="card-title">2. Просто нажми на поле</h5>
+                <p class="card-text">Все поля, что были сгенерированы, копируются по клику( кликаем по полю и все содержание поля попадает в буффер). Теперь поэтапно копируем и вставляем в командную строку. В конце получаем виртуальный хост.</p>
+              </div>
+            </div>
+        </section>
+
+        <section class="col-md-8 sect_block">
+            <div class="main_block">
+                    <div class="jumbotron">
+                        <h1 class="display-4">Привет</h1>
+                        <p class="lead">Проект развивается. Все еще впереди.</p>
+                        <hr class="my-4">
+                        <div class="info-log col-md-12">
+                            <div class="col-md-6 float-md-left border-log log-lt">
+                                <span class="badge badge-pill badge-dark">v1.3.0</span>
+                                <p>Сгенерированный код теперь появляется в модальном окне. Был изменен код генерации.</p>
+                            </div>
+                            <div class="col-md-6 float-md-right border-log log-rt">
+                                <span class="badge badge-pill badge-dark">v1.2.2</span>
+                                <p>Убрана генерация "на лету". Добавлена генерация по кнопке.</p>
+                            </div>
+                        </div>
+                        <div class="info-log col-md-12">
+                            <div class="col-md-6 float-md-left border-log log-lt">
+                                <span class="badge badge-pill badge-dark">v1.2.1</span>
+                                <p>Добавлено лого и favicon</p>
+                            </div>
+                            <div class="col-md-6 float-md-right border-log log-rt">
+                                <span class="badge badge-pill badge-dark">v1.2.0</span>
+                                <p>Исключена генерация в хосте ссылок с https/http в начале и минус(-), слеш(/) и пробел( ) в конце</p>
+                            </div>
+                        </div>
+                        <div class="info-log col-md-12">
+                            <div class="col-md-6 float-md-left border-log log-lt">
+                                <span class="badge badge-pill badge-dark">v1.1.2</span>
+                                <p>Добавлен краткий мануал и Навбар с названием</p>
+                            </div>
+                            <div class="col-md-6 float-md-right border-log log-rt">
+                                <span class="badge badge-pill badge-dark">v1.1.1</span>
+                                <p>Изменения в дизайне.Изменен блок с вводом.</p>
+                            </div>
+                        </div>
+                        <div class="info-log col-md-12">
+                            <div class="col-md-6 float-md-left border-log log-lt">
+                                <span class="badge badge-pill badge-dark">v1.1.0</span>
+                                <p>Добавлено копирование текста по клику поля. Пофикшен баг. Изменения в дизайне. </p>
+                            </div>
+                            <div class="col-md-6 float-md-right border-log log-rt">
+                                <span class="badge badge-pill badge-dark">v1.0.0</span>
+                                <p>Релиз</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>
