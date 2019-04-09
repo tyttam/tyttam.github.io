@@ -55,6 +55,9 @@ $(document).ready(function(){
             // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
             host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
             directory = $('#dirName').val();
+            if (!(directory.match(/^[a-zA-Z0-9\/]+$/i))) {
+                directory = '';
+            }
 
             checkInputs = checkInput(host,directory,type_host);
 
