@@ -47,4 +47,18 @@ header, main, footer {
     background-color: rgba(37, 170, 234, 0.2);
     margin: 5px auto;
     padding: 5px;
+    cursor: pointer;
+}
+.line:hover {
+    background-color: rgba(37, 170, 234, 0.6);
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #1e88e5 !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #1e88e5 !important;
+    box-shadow: 0 1px 0 0 #1e88e5 !important;
 }

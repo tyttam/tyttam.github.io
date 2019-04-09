@@ -1,6 +1,6 @@
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
-var type_host;
+var type_host = 'apache';
 
 var copy = new Clipboard('.line');
 
@@ -51,14 +51,12 @@ $(document).ready(function(){
         };
     });
         $('#generate' ).click(function(){
-
             hostCheck = $('#hostName').val();
             // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
             host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
             directory = $('#dirName').val();
 
             checkInputs = checkInput(host,directory,type_host);
-            console.log(type_host);
 
             if (checkInputs) {
                 var modalContent = '';
