@@ -10,22 +10,21 @@ copy.on('success', function(e){
 
 M.AutoInit();
 
-function checkInput(host, directory, type_host) {
+function checkInput(host, directory) {
     if (host == '') {
         M.toast({html: 'Нужно ввести адрес сайта', classes: 'rounded'});
         return false;
-    } else {
-        if (!(host.match(/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i))) {
-            M.toast({html: 'Введен некорректный Url', classes: 'rounded'});
-            return false;
-        }
+    } else if (!(host.match(/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/i)))
+    {
+        M.toast({html: 'Введен некорректный Url', classes: 'rounded'});
+        return false;
     }
     if (directory == '') {
         M.toast({html: 'Нужно прописать путь к файлам сайта', classes: 'rounded'});
         return false;
-    }
-    if (type_host == undefined) {
-        M.toast({html: 'Нужно выбрать свой локлаьный хост', classes: 'rounded'});
+    } else if(!(directory.match(/^[^<>]+$/i)))
+    {
+        M.toast({html: 'Вы вводите недопустимые символы', classes: 'rounded'});
         return false;
     }
     return true;
@@ -54,12 +53,12 @@ $(document).ready(function(){
             hostCheck = $('#hostName').val();
             // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
             host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
-            directory = $('#dirName').val();
-            if (!(directory.match(/^[a-zA-Z0-9\/]+$/i))) {
-                directory = '';
-            }
-
-            checkInputs = checkInput(host,directory,type_host);
+            directoryCheck = $('#dirName').val();
+            // Убираем часть с ненужными элементами
+            directory = directoryCheck.replace(/(index|index.php|index.html|index.htm)+$/g, "");
+            // Переменная возвращает true or false
+            // Проверяем корректность вводимых данных
+            checkInputs = checkInput(host,directory);
 
             if (checkInputs) {
                 var modalContent = '';
@@ -72,6 +71,8 @@ $(document).ready(function(){
                 }
                 $('.card').removeClass('hide');
                 $('#text').html(modalContent);
+            } else {
+                $('.card').addClass('hide');
             }
         });
 });
