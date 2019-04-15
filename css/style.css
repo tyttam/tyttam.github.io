@@ -21,6 +21,14 @@ header, main, footer {
     box-shadow : 3px 3px 20px 0 rgba(30, 125, 179, 0.5);
     color: white;
 }
+.sidenav li a.active i{
+    color: white;
+}
+
+span.badge.new {
+    color: black;
+}
+
 .sidenav li a{
     margin-right: 10px;
     border-radius: 0 10px 10px 0;

@@ -6,6 +6,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified JavaScript -->
     <script
@@ -18,24 +19,22 @@
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper">
-                <form>
-                    <div class="input-field">
-                        <input id="search" type="search" required placeholder="Поиск пока не работает">
-                        <i class="material-icons">закрыть</i>
-                    </div>
-                </form>
-            </div>
+            <div class="nav-wrapper"></div>
         </nav>
     </header>
     <ul id="slide-out" class="sidenav sidenav-fixed col s3">
         <img src="img/logo.png">
         <li>
-            <a href="#" class="active">Локальный хост</a>
+            <a href="#" class="active">
+                <i class="Small material-icons">developer_mode</i>
+                Локальный хост
+            </a>
         </li>
         <li>
-            <a href="#">Changelog
-                <span class="new badge blue">2.0.0</span>
+            <a href="changelog.html">
+                <i class="Small material-icons">description</i>
+                Changelog
+                <span class="new badge blue" data-badge-caption="new">2.0.0</span>
             </a>
         </li>
     </ul>
