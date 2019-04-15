@@ -49,7 +49,7 @@ $(document).ready(function(){
             type_host = 'nginx';
         };
     });
-        $('#generate' ).click(function(){
+        $('#generate').click(function(){
             hostCheck = $('#hostName').val();
             // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
             host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
@@ -71,6 +71,14 @@ $(document).ready(function(){
                 }
                 $('.card').removeClass('hide');
                 $('#text').html(modalContent);
+
+                $('#generate').attr('href', '#text');
+
+                var el = $('#generate');
+                var dest = el.attr('href');
+                if(dest !== undefined && dest !== '') {
+                    $('html').animate({scrollTop: $(dest).offset().top}, 1000);
+                }
             } else {
                 $('.card').addClass('hide');
             }
