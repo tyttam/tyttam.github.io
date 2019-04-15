@@ -22,7 +22,7 @@ function checkInput(host, directory) {
     if (directory == '') {
         M.toast({html: 'Нужно прописать путь к файлам сайта', classes: 'rounded'});
         return false;
-    } else if(!(directory.match(/^[^<>]+$/i)))
+    } else if(!(directory.match(/^[^<>а-я]+$/i)))
     {
         M.toast({html: 'Вы вводите недопустимые символы', classes: 'rounded'});
         return false;
