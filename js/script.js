@@ -1,7 +1,8 @@
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 var type_host = 'apache';
-var version = '2.0.2';
+var version = '2.0.3';
+var optionChanchelogCookie = occ = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
 
@@ -10,6 +11,16 @@ copy.on('success', function(e){
 });
 
 M.AutoInit();
+
+// Куки последнего обновления
+var FullCookie = 'chanchelog=' + version;
+if (document.cookie != FullCookie) {
+    $('span.badge').addClass('new');
+    var targetCheck = $('.popout li').first();
+    $(targetCheck).click(function() {
+        setCookie('chanchelog', version, occ);
+    })
+}
 
 function checkInput(host, directory) {
     if (host == '') {
@@ -85,10 +96,3 @@ $(document).ready(function(){
         }
     });
 });
-
-var FullCookie = 'chanchelog=' + version;
-
-if (document.cookie != FullCookie) {
-    setCookie('chanchelog', version, {expires : 360000000, path : '/'});
-}
-// deleteCookie(name);

@@ -5,7 +5,7 @@ function setCookie(name, value, options) {
 
     if (typeof expires == "number" && expires) {
         var d = new Date();
-        d.setTime(d.getTime() + expires * 1000);
+        d.setTime(d.getTime() + expires * 1000 * 60 * 60 * 24);
         expires = options.expires = d;
     }
     if (expires && expires.toUTCString) {
