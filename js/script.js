@@ -16,9 +16,12 @@ M.AutoInit();
 var FullCookie = 'chanchelog=' + version;
 if (document.cookie != FullCookie) {
     $('span.badge').addClass('new');
-    var targetCheck = $('.popout li').first();
-    $(targetCheck).click(function() {
+    // Добавляем тригер для записи кук
+    $('.popout li').first().attr('id', 'lastNews');
+    $('#lastNews').click(function() {
         setCookie('chanchelog', version, occ);
+        // Сразу убираем элемент нью
+        $('span.badge').removeClass('new');
     })
 }
 
