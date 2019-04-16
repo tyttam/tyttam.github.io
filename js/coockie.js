@@ -28,6 +28,13 @@ function setCookie(name, value, options) {
     document.cookie = updatedCookie;
 }
 
+function getCookie(name) {
+  var matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 function deleteCookie(name) {
     setCookie(name, "", {
         expires: -1
