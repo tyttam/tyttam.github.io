@@ -31,9 +31,9 @@ function checkInput(host, directory) {
 }
 
 $(document).ready(function(){
-  $('.sidenav').sidenav();
+    $('.sidenav').sidenav();
 
-  $("#apache, #nginx").change(function () {
+    $("#apache, #nginx").change(function () {
         if ($("#apache").is(":checked")) {
             $('.apache').removeClass('filter-gray');
             $('.nginx').removeClass('filter-gray-off');
@@ -49,38 +49,41 @@ $(document).ready(function(){
             type_host = 'nginx';
         };
     });
-        $('#generate').click(function(){
-            hostCheck = $('#hostName').val();
-            // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
-            host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
-            directoryCheck = $('#dirName').val();
-            // Убираем часть с ненужными элементами
-            directory = directoryCheck.replace(/(index|index.php|index.html|index.htm)+$/g, "");
-            // Переменная возвращает true or false
-            // Проверяем корректность вводимых данных
-            checkInputs = checkInput(host,directory);
+    $('#generate').click(function(){
+        hostCheck = $('#hostName').val();
+        // проверяем юрл, если есть [http,https,/,-, ], то отбрасываем эти части
+        host = hostCheck.replace( /^(http:\/\/|https:\/\/)|[\/\- ]+$/g, "");
+        directoryCheck = $('#dirName').val();
+        // Убираем часть с ненужными элементами
+        directory = directoryCheck.replace(/(index|index.php|index.html|index.htm)+$/gi, "");
+        // Переменная возвращает true or false
+        // Проверяем корректность вводимых данных
+        checkInputs = checkInput(host,directory);
 
-            if (checkInputs) {
-                var modalContent = '';
-                var vh = new VirtHost(host, directory);
-                var i = 0;
-                var content = type_host == 'apache' ? vh.getApache() : vh.getNginx();
-                for (key in content) {
-                    i++;
-                    modalContent += "<div id=\"copyme" + i + "\" class=\"line\" data-clipboard-action=\"copy\" data-clipboard-target=\"#copyme" + i + "\">" + content[key] + "</div>";
-                }
-                $('.card').removeClass('hide');
-                $('#text').html(modalContent);
-
-                $('#generate').attr('href', '#text');
-
-                var el = $('#generate');
-                var dest = el.attr('href');
-                if(dest !== undefined && dest !== '') {
-                    $('html').animate({scrollTop: $(dest).offset().top}, 1000);
-                }
-            } else {
-                $('.card').addClass('hide');
+        if (checkInputs) {
+            var modalContent = '';
+            var vh = new VirtHost(host, directory);
+            var i = 0;
+            var content = type_host == 'apache' ? vh.getApache() : vh.getNginx();
+            for (key in content) {
+                i++;
+                modalContent += "<div id=\"copyme" + i + "\" class=\"line\" data-clipboard-action=\"copy\" data-clipboard-target=\"#copyme" + i + "\">" + content[key] + "</div>";
             }
-        });
+            $('.card').removeClass('hide');
+            $('#text').html(modalContent);
+
+            $('#generate').attr('href', '#text');
+
+            var el = $('#generate');
+            var dest = el.attr('href');
+            if(dest !== undefined && dest !== '') {
+                $('html').animate({scrollTop: $(dest).offset().top}, 1000);
+            }
+        } else {
+            $('.card').addClass('hide');
+        }
+    });
 });
+
+setCookie('chanchelog', '2.0.0', {expires : 600, path : '/'});
+// deleteCookie(name);
