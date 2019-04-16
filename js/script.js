@@ -15,13 +15,13 @@ M.AutoInit();
 // Куки последнего обновления
 var FullCookie = 'chanchelog=' + version;
 if (document.cookie != FullCookie) {
-    $('span.badge').addClass('new');
+    $('span.badge').data('badge-caption', 'new');
     // Добавляем тригер для записи кук
     $('.popout li').first().attr('id', 'lastNews');
     $('#lastNews').click(function() {
         setCookie('chanchelog', version, optionChanchelogCookie);
         // Сразу убираем элемент нью
-        $('span.badge').removeClass('new');
+        $('span.badge').data('badge-caption', '');
     })
 }
 
