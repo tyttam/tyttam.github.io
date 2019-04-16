@@ -1,7 +1,7 @@
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 var type_host = 'apache';
-var version = '2.0.3';
+var version = '2.0.4';
 var optionChanchelogCookie = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
@@ -10,7 +10,6 @@ M.AutoInit();
 copy.on('success', function(e){
     window.setTimeout(function(){e.clearSelection();}, 10);
 });
-
 
 // Куки последнего обновления
 var FullCookie = 'chanchelog=' + version;
