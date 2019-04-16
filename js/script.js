@@ -20,6 +20,7 @@ if (document.cookie != FullCookie) {
     $('.popout li').first().attr('id', 'lastNews');
     $('#lastNews').click(function() {
         setCookie('chanchelog', version, optionChanchelogCookie);
+        $('span.badge').text(version);
     })
 } else {
     $('span.badge').text(version);
