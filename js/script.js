@@ -5,24 +5,25 @@ var version = '2.0.3';
 var optionChanchelogCookie = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
+M.AutoInit();
 
 copy.on('success', function(e){
     window.setTimeout(function(){e.clearSelection();}, 10);
 });
 
-M.AutoInit();
 
 // Куки последнего обновления
 var FullCookie = 'chanchelog=' + version;
 if (document.cookie != FullCookie) {
-    $('span.badge').data('badgeCaption', 'new');
+    // сообщаем что появилась новость
+    $('span.badge').text(version + " new");
     // Добавляем тригер для записи кук
     $('.popout li').first().attr('id', 'lastNews');
     $('#lastNews').click(function() {
         setCookie('chanchelog', version, optionChanchelogCookie);
-        // Сразу убираем текст нью
-        $('span.badge').data('badgeCaption', '');
     })
+} else {
+    $('span.badge').text(version);
 }
 
 function checkInput(host, directory) {
