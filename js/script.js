@@ -84,7 +84,7 @@ $(document).ready(function(){
         }
     });
 });
-if (!getCookie('chanchelog=2.0.0')) {
-    setCookie('chanchelog', '2.0.0', {expires : 36000000, path : '/'});
+if (!getCookie('chanchelog=2.0.1')) {
+    setCookie('chanchelog', '2.0.1', {expires : 36000000, path : '/'});
 }
 // deleteCookie(name);

@@ -23,8 +23,6 @@ function setCookie(name, value, options) {
             updatedCookie += "=" + propValue;
         }
     }
-    console.log(updatedCookie);
-
     document.cookie = updatedCookie;
 }
 
@@ -32,6 +30,7 @@ function getCookie(name) {
   var matches = document.cookie.match(new RegExp(
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
+  console.log(matches);
   return matches ? decodeURIComponent(matches[1]) : undefined;
 }
 
