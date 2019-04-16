@@ -2,7 +2,7 @@
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 var type_host = 'apache';
 var version = '2.0.3';
-var optionChanchelogCookie = occ = {expires : 365, path : '/'};
+var optionChanchelogCookie = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
 
@@ -19,7 +19,7 @@ if (document.cookie != FullCookie) {
     // Добавляем тригер для записи кук
     $('.popout li').first().attr('id', 'lastNews');
     $('#lastNews').click(function() {
-        setCookie('chanchelog', version, occ);
+        setCookie('chanchelog', version, optionChanchelogCookie);
         // Сразу убираем элемент нью
         $('span.badge').removeClass('new');
     })
