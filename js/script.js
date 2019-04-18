@@ -1,7 +1,7 @@
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 var type_host = 'apache';
-var version = '2.0.6';
+var version = '2.0.7';
 var optionChanchelogCookie = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
@@ -11,8 +11,7 @@ copy.on('success', function(e){
 });
 
 // Куки последнего обновления
-var FullCookie = 'chanchelog=' + version;
-if (document.cookie != FullCookie) {
+if (getCookie('chanchelog') != version) {
     // сообщаем что появилась новость
     $('span.badge').text(version + " new");
     // Добавляем тригер для записи кук
@@ -56,13 +55,12 @@ $(document).ready(function(){
         onOpenEnd : function() {
             $('#info-cookie').find('[data-modal-cookie]').click(function(e){
                 var option = e.target.getAttribute('data-modal-cookie');
-                console.log(option);
                 setCookie('cookie_resolution', option, optionChanchelogCookie);
             })
         },
     });
 
-    if (true) {
+    if (getCookie('cookie_resolution') == undefined) {
         // инициализируем модальное окно уведомляющее о куках
         $('#info-cookie').modal('open');
     }
