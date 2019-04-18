@@ -10,9 +10,9 @@
 
     <!-- Compiled and minified JavaScript -->
     <script
-      src="https://code.jquery.com/jquery-3.4.0.min.js"
-      integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-      crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/clipboard.min.js"></script>
 </head>
@@ -43,17 +43,18 @@
             <h2>Генератор виртуального хоста</h2>
             <div class="row">
                 <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
+                    <div class="col s6">
+                        <div class="input-field col s12">
                             <input placeholder="tyttam.github.io" id="hostName" type="text" class="">
                             <label for="hostName">Адрес сайта</label>
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s12">
                             <input placeholder="/home/user/site/tyttam.github.io/web" id="dirName" type="text" class="">
                             <label for="dirName">Путь к папке с файлами сайта</label>
                         </div>
                     </div>
-                    <div class="col s12 m8 offset-m2 center-align">
+                    <!-- <div class="col s6"> -->
+                    <div class="col s6 center-align">
                         <h5>Выберете сервер который у вас установлен локально</h5>
                         <label>
                             <input name="group1" type="radio" id="apache" checked/>
@@ -67,26 +68,28 @@
                                 <img src="img/nginx.png" alt="" style="width: 130px;height:130px;" class="nginx filter-gray">
                             </span>
                         </label>
+                    </div>
+                    <div class="center-align">
                         <p><a href="#" class="waves-effect waves-light btn  blue darken-1" id="generate">Сгенерировать локальный хост</a></p>
                     </div>
-                </form>
-            </div>
-            <div class="row">
-                <div class="col s12 m6 offset-m3">
-                    <div class="card hide">
-                        <div class="card-content">
-                            <div id="text"></div>
+                <!-- </div> -->
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6 offset-m3">
+                        <div class="card hide">
+                            <div class="card-content">
+                                <div id="text"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
-    <footer>
+            </main>
+            <footer>
 
-    </footer>
-    <script type="text/javascript" src="js/virthost.js"></script>
-    <script type="text/javascript" src="js/cookie.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-</body>
-</html>
+            </footer>
+            <script type="text/javascript" src="js/virthost.js"></script>
+            <script type="text/javascript" src="js/cookie.js"></script>
+            <script type="text/javascript" src="js/script.js"></script>
+        </body>
+        </html>
