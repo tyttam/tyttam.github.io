@@ -5,7 +5,6 @@ var version = '2.0.6';
 var optionChanchelogCookie = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
-M.AutoInit();
 
 copy.on('success', function(e){
     window.setTimeout(function(){e.clearSelection();}, 10);
@@ -47,6 +46,28 @@ function checkInput(host, directory) {
 }
 
 $(document).ready(function(){
+    M.AutoInit();
+
+    // Надстройки для модального окна уведомляющего о куках
+    $('#info-cookie').modal({
+        dismissible : false,
+        opacity : 0.2,
+        inDuration : 100,
+        onOpenEnd : function() {
+            $('#info-cookie').find('[data-modal-cookie]').click(function(e){
+                var option = e.target.getAttribute('data-modal-cookie');
+                console.log(option);
+                setCookie('cookie_resolution', option, optionChanchelogCookie);
+            })
+        },
+    });
+
+    if (true) {
+        // инициализируем модальное окно уведомляющее о куках
+        $('#info-cookie').modal('open');
+    }
+
+    // инициализируем меню
     $('.sidenav').sidenav();
 
     $("#apache, #nginx").change(function () {
