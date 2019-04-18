@@ -1,7 +1,7 @@
 //клятая табуляция
 var tab = '&nbsp;&nbsp;&nbsp;&nbsp';
 var type_host = 'apache';
-var version = '2.0.7';
+var version = '2.0.8';
 var optionChanchelogCookie = {expires : 365, path : '/'};
 
 var copy = new Clipboard('.line');
